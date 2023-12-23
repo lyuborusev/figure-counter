@@ -1,13 +1,25 @@
 enable_testing()
 
-add_executable(
-  example_test
-  example_test.cpp
+file(GLOB APP_SOURCES
+    "../**/*.h"
+    "../**/*.cpp"
 )
+
+file(GLOB TEST_SOURCES
+    "*.h"
+    "*.cpp"
+)
+
+add_executable(
+  basic_test
+  ${APP_SOURCES}
+  ${TEST_SOURCES}
+)
+
 target_link_libraries(
-    example_test
+    basic_test
   GTest::gtest_main
 )
 
 include(GoogleTest)
-gtest_discover_tests(example_test)
+gtest_discover_tests(basic_test)

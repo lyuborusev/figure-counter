@@ -21,7 +21,7 @@ namespace FigureCounter
     class FigureMatrixImpl : public FigureMatrix
     {
     public:
-        FigureMatrixImpl(std::vector<std::vector<TElement>> &_data) : data(_data)
+        FigureMatrixImpl(std::vector<std::vector<TElement>> _data) : data(_data)
         {
         }
         virtual bool isMarked(int i, int j)

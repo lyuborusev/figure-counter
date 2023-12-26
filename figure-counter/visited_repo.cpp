@@ -3,13 +3,18 @@
 
 namespace FigureCounter
 {
-    bool VisitedRepo::isVisited(const MatrixType::Iterator &iter) const
+    VisitedRepo::VisitedRepo(int colSize, int rowSize)
+        : visited(colSize * rowSize, false)
     {
-        return std::find(visited.begin(), visited.end(), iter) != visited.end();
     }
 
-    void VisitedRepo::addVisited(const MatrixType::Iterator &iter)
+    bool VisitedRepo::isVisited(int index) const
     {
-        visited.push_back(iter);
+        return visited[index];
+    }
+
+    void VisitedRepo::addVisited(int index)
+    {
+        visited[index] = true;
     }
 }

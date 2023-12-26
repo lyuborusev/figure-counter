@@ -8,15 +8,13 @@ namespace FigureCounter
     class Matrix
     {
     public:
-        typedef typename std::vector<TElement>::iterator Iterator;
-
         Matrix(std::vector<TElement> _data, int _rowSize, int _colSize);
-        bool isMarked(Iterator iter);
+        bool isMarked(int index);
 
-        Iterator begin();
-        Iterator end();
+        std::vector<int> getNeighbors(int index);
 
-        std::vector<Iterator> getNeighbors(const Iterator &iter);
+        int getRowSize() const;
+        int getColSize() const;
 
     private:
         bool IsInBounds(int min, int max, int val);

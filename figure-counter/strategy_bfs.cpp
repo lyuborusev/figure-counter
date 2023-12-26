@@ -10,26 +10,30 @@ namespace FigureCounter
 {
     int StrategyBFS::getFigureCount(const std::unique_ptr<MatrixType> &matrix) const
     {
-        VisitedRepo visited;
+        const int colSize = matrix->getColSize();
+        const int rowSize = matrix->getRowSize();
+
+        VisitedRepo visited(colSize, rowSize);
 
         int count = 0;
-        for (auto iter = matrix->begin(); iter != matrix->end(); ++iter)
+        int size = colSize * rowSize;
+        for (int index = 0; index < size; index++)
         {
-            if (matrix->isMarked(iter) && !visited.isVisited(iter))
+            if (matrix->isMarked(index) && !visited.isVisited(index))
             {
                 ++count;
 
-                traverseFigureBFS(matrix, visited, iter);
+                traverseFigureBFS(matrix, visited, index);
             }
         }
 
         return count;
     }
 
-    void StrategyBFS::traverseFigureBFS(const std::unique_ptr<MatrixType> &matrix, VisitedRepo &visited, MatrixType::Iterator iter) const
+    void StrategyBFS::traverseFigureBFS(const std::unique_ptr<MatrixType> &matrix, VisitedRepo &visited, int index) const
     {
-        std::deque<MatrixType::Iterator> elements;
-        elements.push_back(iter);
+        std::deque<int> elements;
+        elements.push_back(index);
 
         while (!elements.empty())
         {

@@ -2,6 +2,19 @@
 
 namespace TestInput
 {
+
+// x o x o x o x
+// x o o o o o x    
+// x x x x x x x   
+// 
+// 
+// 
+        //    'X', 'O', 'O', 'O', 'O', /**/
+        //    'X', 'O', 'X', 'X', 'O', /**/
+        //    'O', 'X', 'O', 'X', 'O', /**/
+        //    'O', 'X', 'X', 'X', 'O', /**/
+        //    'O', 'O', 'O', 'O', 'X', /**/
+        
     std::vector<char> getExampleMatrixOfChar()
     {
         return {

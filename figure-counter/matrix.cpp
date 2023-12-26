@@ -16,25 +16,13 @@ namespace FigureCounter
     }
 
     template <typename TElement, const TElement FULL>
-    bool Matrix<TElement, FULL>::isMarked(Iterator iter)
+    bool Matrix<TElement, FULL>::isMarked(int index)
     {
-        return *iter == FULL;
+        return data[index] == FULL;
     }
 
     template <typename TElement, const TElement FULL>
-    typename Matrix<TElement, FULL>::Iterator Matrix<TElement, FULL>::begin()
-    {
-        return data.begin();
-    }
-
-    template <typename TElement, const TElement FULL>
-    typename Matrix<TElement, FULL>::Iterator Matrix<TElement, FULL>::end()
-    {
-        return data.end();
-    }
-
-    template <typename TElement, const TElement FULL>
-    std::vector<typename Matrix<TElement, FULL>::Iterator> Matrix<TElement, FULL>::getNeighbors(const typename Matrix<TElement, FULL>::Iterator &iter)
+    std::vector<int> Matrix<TElement, FULL>::getNeighbors(int index)
     {
         const std::vector<std::pair<int, int>> offsets = {
             {-1, 0},
@@ -42,11 +30,10 @@ namespace FigureCounter
             {0, 1},
             {0, -1}};
 
-        const int index = iter - data.begin();
         const int row = index / colSize;
         const int col = index % colSize;
 
-        std::vector<typename Matrix<TElement, FULL>::Iterator> neighbors;
+        std::vector<int> neighbors;
         for (auto offset : offsets)
         {
             const int rowOffset = row + offset.first;
@@ -54,7 +41,7 @@ namespace FigureCounter
             if (IsInBounds(0, rowSize, rowOffset) &&
                 IsInBounds(0, colSize, colOffset))
             {
-                neighbors.push_back(data.begin() + colOffset * colSize + rowOffset);
+                neighbors.push_back(colOffset * colSize + rowOffset);
             }
         }
 
@@ -65,6 +52,16 @@ namespace FigureCounter
     bool Matrix<TElement, FULL>::IsInBounds(int min, int max, int val)
     {
         return val >= min && val < max;
+    }
+    template <typename TElement, const TElement FULL>
+    int Matrix<TElement, FULL>::getRowSize() const
+    {
+        return rowSize;
+    }
+    template <typename TElement, const TElement FULL>
+    int Matrix<TElement, FULL>::getColSize() const
+    {
+        return colSize;
     }
 
     template class Matrix<char, 'X'>;

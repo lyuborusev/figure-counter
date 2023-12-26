@@ -23,6 +23,6 @@ namespace FigureCounter
     {
     public:
         virtual int getFigureCount(const std::unique_ptr<MatrixType> &matrix) const;
-        void traverseFigureBFS(const std::unique_ptr<MatrixType> &matrix, VisitedRepo &visited, MatrixType::Iterator iter) const;
+        void traverseFigureBFS(const std::unique_ptr<MatrixType> &matrix, VisitedRepo &visited, int index) const;
     };
 }

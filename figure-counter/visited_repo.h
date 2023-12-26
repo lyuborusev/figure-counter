@@ -7,10 +7,11 @@ namespace FigureCounter
     class VisitedRepo
     {
     public:
-        bool isVisited(const MatrixType::Iterator &iter) const;
-        void addVisited(const MatrixType::Iterator &iter);
+        VisitedRepo(int colSize, int rowSize);
+        bool isVisited(int index) const;
+        void addVisited(int index);
 
     private:
-        std::vector<MatrixType::Iterator> visited;
+        std::vector<bool> visited;
     };
 }

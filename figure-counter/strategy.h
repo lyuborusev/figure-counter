@@ -1,6 +1,7 @@
 #pragma once
 
 #include "matrix.h"
+#include "visited_repo.h"
 #include <memory>
 
 namespace FigureCounter
@@ -22,6 +23,6 @@ namespace FigureCounter
     {
     public:
         virtual int getFigureCount(const std::unique_ptr<MatrixType> &matrix) const;
-        void traverseFigureBFS(const std::unique_ptr<MatrixType> &matrix, std::vector<MatrixType::Iterator> &visited, MatrixType::Iterator iter) const;
+        void traverseFigureBFS(const std::unique_ptr<MatrixType> &matrix, VisitedRepo &visited, MatrixType::Iterator iter) const;
     };
 }

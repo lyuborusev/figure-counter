@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.cpp": "cpp",
+        "iterator": "cpp",
+        "vector": "cpp",
+        "algorithm": "cpp"
+    }
+}

@@ -4,9 +4,8 @@
 
 TEST(FigureCounter, MockStrategy)
 {
-    auto figureMatrix = std::shared_ptr<FigureCounter::FigureMatrix>(new FigureCounter::FigureMatrixImpl<char, 'X'>({}));
     auto context = new FigureCounter::Context(
-        figureMatrix,
+        std::make_unique<FigureCounter::MatrixType>(std::vector<char>({}), 0, 0),
         std::make_unique<FigureCounter::StrategyMock>());
 
     int count = context->findFigures();

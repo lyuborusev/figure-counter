@@ -1,26 +1,27 @@
 #pragma once
 
+#include "matrix.h"
 #include <memory>
 
 namespace FigureCounter
 {
-
-    class FigureMatrix
-    {
-    public:
-        virtual bool isMarked(int i, int j) = 0;
-    };
-
     class Strategy
     {
     public:
-        virtual int getFigureCount(std::shared_ptr<FigureMatrix> matrix) = 0;
+        virtual int getFigureCount(const std::unique_ptr<MatrixType> &matrix) const = 0;
         virtual ~Strategy();
     };
 
     class StrategyMock : public Strategy
     {
     public:
-        virtual int getFigureCount(std::shared_ptr<FigureMatrix> matrix);
+        virtual int getFigureCount(const std::unique_ptr<MatrixType> &matrix) const;
+    };
+
+    class StrategyBFS : public Strategy
+    {
+    public:
+        virtual int getFigureCount(const std::unique_ptr<MatrixType> &matrix) const;
+        void traverseFigureBFS(const std::unique_ptr<MatrixType> &matrix, std::vector<MatrixType::Iterator> &visited, MatrixType::Iterator iter) const;
     };
 }

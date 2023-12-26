@@ -43,8 +43,8 @@ namespace FigureCounter
             {0, -1}};
 
         const int index = iter - data.begin();
-        const int col = index / colSize;
-        const int row = index % colSize;
+        const int row = index / colSize;
+        const int col = index % colSize;
 
         std::vector<typename Matrix<TElement, FULL>::Iterator> neighbors;
         for (auto offset : offsets)

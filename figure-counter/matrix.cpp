@@ -41,7 +41,7 @@ namespace FigureCounter
             if (IsInBounds(0, rowSize, rowOffset) &&
                 IsInBounds(0, colSize, colOffset))
             {
-                neighbors.push_back(colOffset * colSize + rowOffset);
+                neighbors.push_back(rowOffset * colSize + colOffset);
             }
         }
 

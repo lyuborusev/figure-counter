@@ -19,18 +19,38 @@ namespace FigureCounter
         int size = colSize * rowSize;
         for (int index = 0; index < size; index++)
         {
-            if (matrix->isMarked(index) && !visited.isVisited(index))
+            if (matrix->isMarked(index) && visited.isVisited(index) == 0)
             {
                 ++count;
 
-                traverseFigureBFS(matrix, visited, index);
+                traverseFigureBFS(matrix, visited, index, count);
             }
         }
+        /*
+        for (int i = 0; i < rowSize; i++)
+        {
+            for (int j = 0; j < colSize; j++)
+            {
+                int vis = visited.visited[i * colSize + j];
+                if (vis > 0)
+                {
+                    std::cout << vis;
+                }
+                else
+                {
+                    std::cout << ' ';
+                }
 
+                std::cout << '\t';
+            }
+            std::cout << std::endl;
+        }
+        std::cout << std::endl;
+        */
         return count;
     }
 
-    void StrategyBFS::traverseFigureBFS(const std::unique_ptr<MatrixType> &matrix, VisitedRepo &visited, int index) const
+    void StrategyBFS::traverseFigureBFS(const std::unique_ptr<MatrixType> &matrix, VisitedRepo &visited, int index, int label) const
     {
         std::deque<int> elements;
         elements.push_back(index);
@@ -40,7 +60,7 @@ namespace FigureCounter
             auto el = elements.front();
             elements.pop_front();
 
-            visited.addVisited(el);
+            visited.addVisited(el, label);
 
             auto neighbours = matrix->getNeighbors(el);
 

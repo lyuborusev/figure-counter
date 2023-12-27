@@ -19,6 +19,7 @@ namespace FigureCounter
     private:
         bool IsInBounds(int min, int max, int val);
 
+    public:
         std::vector<TElement> data;
         const int rowSize;
         const int colSize;

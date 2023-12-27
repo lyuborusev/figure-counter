@@ -4,7 +4,7 @@
 namespace FigureCounter
 {
     VisitedRepo::VisitedRepo(int colSize, int rowSize)
-        : visited(colSize * rowSize, false)
+        : visited(colSize * rowSize, 0)
     {
     }
 
@@ -13,8 +13,8 @@ namespace FigureCounter
         return visited[index];
     }
 
-    void VisitedRepo::addVisited(int index)
+    void VisitedRepo::addVisited(int index, int label)
     {
-        visited[index] = true;
+        visited[index] = label;
     }
 }

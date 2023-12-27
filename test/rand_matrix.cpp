@@ -9,17 +9,26 @@ TEST(FigureCounter, RandomMatrix)
 
     for (int i = 0; i < 10; i++)
     {
-        const int rowSize = 125;
-        const int colSize = 75;
+        //const int rowSize = 125;
+        //const int colSize = 75;
+
+        const int rowSize = 15;
+        const int colSize = 15;
 
         const auto matrix = matrixGenerator.getMatrix(rowSize, colSize);
 
-        auto context = new FigureCounter::Context(
+        auto contextBFS = new FigureCounter::Context(
             std::make_unique<FigureCounter::MatrixType>(matrix, rowSize, colSize),
             std::make_unique<FigureCounter::StrategyBFS>());
 
-        int count = context->findFigures();
+        int countBFS = contextBFS->findFigures();
 
-        EXPECT_EQ(count, 0);
+        auto contextScan = new FigureCounter::Context(
+            std::make_unique<FigureCounter::MatrixType>(matrix, rowSize, colSize),
+            std::make_unique<FigureCounter::StrategyScan>());
+
+        int countScan = contextScan->findFigures();
+
+        EXPECT_EQ(countBFS, countScan);
     }
 }

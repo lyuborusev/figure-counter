@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "../figure-counter/strategy_traverse.h"
-#include "../figure-counter/strategy_scan.h"
+#include "../figure-counter/strategies/grid_traverse.h"
+#include "../figure-counter/strategies/strategy_scan.h"
 #include "../figure-counter/traverse/strategy_traverse.h"
 #include "../figure-counter/context.h"
 #include "input_data.h"
@@ -18,14 +18,14 @@ TEST(FigureCounter, MediumRandomMatrix)
 
         auto contextBFS = new FigureCounter::Context(
             std::make_unique<FigureCounter::MatrixType>(matrix, rowSize, colSize),
-            std::make_unique<FigureCounter::StrategyTraverse>(
+            std::make_unique<FigureCounter::Strategy::StrategyTraverse>(
                 std::make_unique<FigureCounter::TraverseBFS>()));
 
         int countBFS = contextBFS->findFigures();
 
         auto contextScan = new FigureCounter::Context(
             std::make_unique<FigureCounter::MatrixType>(matrix, rowSize, colSize),
-            std::make_unique<FigureCounter::StrategyScan>(std::make_unique<FigureCounter::TraverseBFS>()));
+        std::make_unique<FigureCounter::Strategy::StrategyScan>());
 
         int countScan = contextScan->findFigures();
 

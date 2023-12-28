@@ -4,13 +4,8 @@
 #include <vector>
 #include <algorithm>
 
-namespace FigureCounter
+namespace FigureCounter::Strategy
 {
-    StrategyScan::StrategyScan(std::unique_ptr<TraverseStrategy> _mergeFigureLabels)
-        : mergeFigureLabels(std::move(_mergeFigureLabels))
-    {
-    }
-
     int StrategyScan::getFigureCount(const std::unique_ptr<MatrixType> &matrix) const
     {
         const int colSize = matrix->getColSize();

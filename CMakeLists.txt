@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(figure-counter VERSION 0.1.0 LANGUAGES C CXX)
 
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 include(CTest)
 enable_testing()
 
@@ -11,8 +14,12 @@ file(GLOB APP_SOURCES
     "*.cpp"
     "figure-counter/*.h"
     "figure-counter/*.cpp"
+    "figure-counter/utils/*.h"
+    "figure-counter/utils/*.cpp"
     "figure-counter/travere/*.h"
     "figure-counter/traverse/*.cpp"
+    "figure-counter/strategies/*.h"
+    "figure-counter/strategies/*.cpp"
     "test/*.h"
     "test/*.cpp"
 )

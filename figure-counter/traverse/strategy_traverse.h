@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../matrix.h"
 #include "../strategy.h"
-#include "../visited_repo.h"
+#include "../utils/matrix.h"
+#include "../utils/visited_repo.h"
 #include "element_queue.h"
 #include <memory>
 

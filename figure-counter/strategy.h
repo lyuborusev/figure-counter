@@ -1,7 +1,6 @@
 #pragma once
 
-#include "matrix.h"
-#include "visited_repo.h"
+#include "utils/matrix.h"
 #include <memory>
 
 namespace FigureCounter

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "matrix.h"
-#include "strategy.h"
-#include "traverse/strategy_traverse.h"
-#include "visited_repo.h"
+#include "../strategy.h"
+#include "../utils/matrix.h"
+#include "../utils/visited_repo.h"
+#include "../traverse/strategy_traverse.h"
 #include <memory>
 
-namespace FigureCounter
+namespace FigureCounter::Strategy
 {
     class StrategyTraverse : public FigureCountStrategy
     {

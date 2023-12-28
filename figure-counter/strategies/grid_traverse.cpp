@@ -1,4 +1,4 @@
-#include "strategy_traverse.h"
+#include "grid_traverse.h"
 
 #include <deque>
 #include <vector>
@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-namespace FigureCounter
+namespace FigureCounter::Strategy
 {
     StrategyTraverse::StrategyTraverse(std::unique_ptr<TraverseStrategy> _traverseStrategy)
         : traverseStrategy(std::move(_traverseStrategy))

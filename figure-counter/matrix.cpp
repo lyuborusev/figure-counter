@@ -1,5 +1,6 @@
 #include "matrix.h"
 #include <stdexcept>
+#include <iostream>
 
 namespace FigureCounter
 {
@@ -16,7 +17,7 @@ namespace FigureCounter
     }
 
     template <typename TElement, const TElement FULL>
-    bool Matrix<TElement, FULL>::isMarked(int index)
+    bool Matrix<TElement, FULL>::isMarked(int index) const
     {
         return data[index] == FULL;
     }
@@ -62,6 +63,20 @@ namespace FigureCounter
     int Matrix<TElement, FULL>::getColSize() const
     {
         return colSize;
+    }
+
+    template <typename TElement, const TElement FULL>
+    void Matrix<TElement, FULL>::display() const
+    {
+        for (int i = 0; i < rowSize; i++)
+        {
+            for (int j = 0; j < colSize; j++)
+            {
+                char c = isMarked(i * colSize + j) == true ? FULL : ' ';
+                std::cout << c << '\t';
+            }
+            std::cout << std::endl;
+        }
     }
 
     template class Matrix<char, 'X'>;

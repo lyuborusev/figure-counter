@@ -6,29 +6,15 @@
 
 namespace FigureCounter
 {
-    class Strategy
+    class IStrategy
+    {
+    public:
+        virtual ~IStrategy();
+    };
+
+    class FigureCountStrategy : public IStrategy
     {
     public:
         virtual int getFigureCount(const std::unique_ptr<MatrixType> &matrix) const = 0;
-        virtual ~Strategy();
-    };
-
-    class StrategyMock : public Strategy
-    {
-    public:
-        virtual int getFigureCount(const std::unique_ptr<MatrixType> &matrix) const;
-    };
-
-    class StrategyBFS : public Strategy
-    {
-    public:
-        virtual int getFigureCount(const std::unique_ptr<MatrixType> &matrix) const;
-        void traverseFigureBFS(const std::unique_ptr<MatrixType> &matrix, VisitedRepo &visited, int index, int label) const;
-    };
-
-    class StrategyScan : public Strategy
-    {
-    public:
-        virtual int getFigureCount(const std::unique_ptr<MatrixType> &matrix) const;
     };
 }

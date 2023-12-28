@@ -10,9 +10,14 @@ namespace FigureCounter
         VisitedRepo(int colSize, int rowSize);
         bool isVisited(int index) const;
         void addVisited(int index, int label);
+        int getLabel(int index) const;
+
+        void display() const;
 
     private:
-    public:
+        const int colSize;
+        const int rowSize;
+
         std::vector<int> visited;
     };
 }

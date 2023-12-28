@@ -9,17 +9,18 @@ namespace FigureCounter
     {
     public:
         Matrix(std::vector<TElement> _data, int _rowSize, int _colSize);
-        bool isMarked(int index);
+        bool isMarked(int index) const;
 
         std::vector<int> getNeighbors(int index);
 
         int getRowSize() const;
         int getColSize() const;
 
+        void display() const;
+
     private:
         bool IsInBounds(int min, int max, int val);
 
-    public:
         std::vector<TElement> data;
         const int rowSize;
         const int colSize;

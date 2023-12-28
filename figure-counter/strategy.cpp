@@ -8,6 +8,5 @@
 
 namespace FigureCounter
 {
-    Strategy::~Strategy() {}
-
+    IStrategy::~IStrategy() {}
 }

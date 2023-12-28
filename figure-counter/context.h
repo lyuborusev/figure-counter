@@ -10,11 +10,11 @@ namespace FigureCounter
     class Context
     {
     public:
-        explicit Context(std::unique_ptr<MatrixType> _matrix, std::unique_ptr<Strategy> &&_strategy);
+        explicit Context(std::unique_ptr<MatrixType> _matrix, std::unique_ptr<FigureCountStrategy> &&_strategy);
         int findFigures() const;
 
     private:
         std::unique_ptr<MatrixType> matrix;
-        std::unique_ptr<Strategy> strategy;
+        std::unique_ptr<FigureCountStrategy> strategy;
     };
 }

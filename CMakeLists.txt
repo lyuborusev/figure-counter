@@ -4,15 +4,17 @@ project(figure-counter VERSION 0.1.0 LANGUAGES C CXX)
 include(CTest)
 enable_testing()
 
+include_directories(${CMAKE_SOURCE_DIR})
+
 file(GLOB APP_SOURCES
     "*.h"
     "*.cpp"
-)
-
-add_executable(
-    figure-counter 
-    ${APP_SOURCES}
-    ${TEST_SOURCES}
+    "figure-counter/*.h"
+    "figure-counter/*.cpp"
+    "figure-counter/travere/*.h"
+    "figure-counter/traverse/*.cpp"
+    "test/*.h"
+    "test/*.cpp"
 )
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
@@ -26,4 +28,15 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-add_subdirectory(test)
+add_executable(
+  basic_test
+  ${APP_SOURCES}
+)
+
+target_link_libraries(
+    basic_test
+  GTest::gtest_main
+)
+
+include(GoogleTest)
+gtest_discover_tests(basic_test)
